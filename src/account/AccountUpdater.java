@@ -61,7 +61,7 @@ public class AccountUpdater extends AccountEditor {
                             clr.clearScreen();
                             myAccount.header();
                             System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\tChanging account email cancelled." + RESET);
-                            System.out.println("\n\n\t\t\t\t\t\t\tpress enter to continue...");
+                            System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
                             s.nextLine();
                             
                             return;
@@ -74,51 +74,70 @@ public class AccountUpdater extends AccountEditor {
     public void changePassword() {
         clr.clearScreen();
         myAccount.header();
-        System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your password" +     RESET); ;
+        //System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your password" +     RESET); ;
+        while(true){
         System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\t\tEnter your new password:" + RESET);
         String newPassword = s.nextLine();
         setNewPassword(newPassword);
 
+        clr.clearScreen();
+        myAccount.header();
         if (!verifier.verifyEmail(this) || !verifier.verifyPassword(this)) {
-            clr.clearScreen();
-            myAccount.header();
             System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\t* Verification failed. Cancelling password change." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
+            s.nextLine();
             return;
         }
 
         if (confirm.confirmAction("\t\t\t\t\t\t\t\t\tAre you sure you want to change your password? (y/n): ")) {
             updatePassword();
+            return;
         }
         else {
             clr.clearScreen();
             myAccount.header();
             System.out.println("\t\t\t\t\t\t\t\t\tChanging account password cancelled.");
+
+            System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
+            s.nextLine();
+            return;
+        }
         }
     }
 
     public void changeIncome() {
         clr.clearScreen();
         myAccount.header();
-        System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your income" +     RESET); ;
+
+        while(true){
+        //System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your income" +     RESET); ;
         System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\t\tEnter your new monthly income : " + RESET);
         double newIncome = s.nextDouble();
         setMonthlyIncome(newIncome);
 
+        clr.clearScreen();
+        myAccount.header();
+
         if (!verifier.verifyEmail(this) || !verifier.verifyPassword(this)) {
-            clr.clearScreen();
-            myAccount.header();
             System.out.println(ORANGE_TEXT + "* Verification failed. Cancelling income change." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
+            s.nextLine();
             return;
         }
 
         if (confirm.confirmAction("\t\t\t\t\t\t\t\t\tAre you sure you want to change your monthly income? (y/n): ")) {
             updateIncome();
+            return;
         }
         else {
             clr.clearScreen();
             myAccount.header();
             System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\t* Changing monthly income cancelled." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
+             s.nextLine();
+             return;
         }
+    }
     }
 
 }

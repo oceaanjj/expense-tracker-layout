@@ -79,14 +79,14 @@ public class AccountEditor {
         if(changed){
             clr.clearScreen();
             myAccount.header();
-            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tEmail changed successfully." + RESET);
-            System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tpress enter to continue...");
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t    Email changed successfully." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
             s.nextLine();
         } else {
             clr.clearScreen();
             myAccount.header();
-            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\t* Can't change Email. Please try again." + RESET);
-            System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tpress enter to continue...");
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t    * Can't change Email. Please try again." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
             s.nextLine();
         }
     }
@@ -134,14 +134,16 @@ public class AccountEditor {
                 Files.write(file.toPath(), lines);
                 clr.clearScreen();
                 myAccount.header();
-                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tPassword changed successfully." + RESET);
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t    Password changed successfully." + RESET);
+                System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             clr.clearScreen();
             myAccount.header();
-            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\t * Can't change Password. Please try again." + RESET);
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t * Can't change Password. Please try again." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
         }
     }
 
@@ -160,14 +162,16 @@ public class AccountEditor {
                 Files.write(file.toPath(), lines);
                 clr.clearScreen();
                 myAccount.header();
-                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tIncome changed successfully." + RESET);
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t   Income changed successfully." + RESET);
+                System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
             clr.clearScreen();
             myAccount.header();
-            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\t* Can't change Income. Please try again." + RESET);
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t  * Can't change Income. Please try again." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\t\t    press enter to continue...");
         }
     }
 
