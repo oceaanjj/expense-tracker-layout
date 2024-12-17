@@ -1,19 +1,27 @@
 package account;
 
+import display.MyAccount;
+import display.clearScreen;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class AccountEditor {
+
+    public static final String GREEN_TEXT = "\u001B[32m"; 
+    public static final String RESET = "\u001B[0m";
+    public static final String ORANGE_TEXT = "\u001B[38;5;214m";
+    public static final String YELLOW_TEXT = "\u001B[33m";
     private String email;
     private String password;
     private double monthlyIncome;
     private String newEmail;
     private String newPassword;
     boolean changed = false;
+    MyAccount myAccount = new MyAccount();
+    clearScreen clr = new clearScreen();
 
     public void setEmail(String email) {
         this.email = email;
@@ -66,10 +74,14 @@ public class AccountEditor {
         renameFile(baseDirectory + "/needs");
 
         if(changed){
-            System.out.println("Email changed successfully.");
+            clr.clearScreen();
+            myAccount.header();
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tEmail changed successfully." + RESET);
             
         } else {
-            System.out.println("Can't change Email. Please try again.");
+            clr.clearScreen();
+            myAccount.header();
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\t* Can't change Email. Please try again." + RESET);
         }
     }
 
@@ -114,12 +126,16 @@ public class AccountEditor {
                 }
 
                 Files.write(file.toPath(), lines);
-                System.out.println("Password changed successfully.");
+                clr.clearScreen();
+                myAccount.header();
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tPassword changed successfully." + RESET);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Can't change Password. Please try again.");
+            clr.clearScreen();
+            myAccount.header();
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\t * Can't change Password. Please try again." + RESET);
         }
     }
 
@@ -136,12 +152,16 @@ public class AccountEditor {
                 }
 
                 Files.write(file.toPath(), lines);
-                System.out.println("Income changed successfully.");
+                clr.clearScreen();
+                myAccount.header();
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tIncome changed successfully." + RESET);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Can't change Income. Please try again.");
+            clr.clearScreen();
+            myAccount.header();
+            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\t* Can't change Income. Please try again." + RESET);
         }
     }
 
