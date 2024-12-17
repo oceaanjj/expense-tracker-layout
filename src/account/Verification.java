@@ -38,7 +38,7 @@ public class Verification {
             } else {
                 clr.clearScreen();
                 myAccount.header();
-                System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t * Email does not match the registered email. Please try again." + RESET);
+                System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t    * Email does not match the registered email. Please try again." + RESET);
             }
         }
     }
