@@ -1,6 +1,7 @@
 package display;
 
 public class warning extends menu {
+    @Override
     public void display() {
     String red = "\u001B[31m";
         String reset = "\u001B[0m";
