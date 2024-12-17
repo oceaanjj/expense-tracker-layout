@@ -55,7 +55,7 @@ public class Main {
         //start
         clr.clearScreen();
         art.display();
-        load.loading();
+        //load.loading();
         clr.clearScreen();
 
         //displaying intro title
@@ -118,6 +118,8 @@ public class Main {
                                                     case 1:
                                                         /*myAccountmenu :*/ while (true) {
                                                             clr.clearScreen();
+                                                            myAccount.header();
+                                                            System.out.println("\n\n");
                                                             myAccount.display();
                                                             System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter choice : " + RESET );
                                                             int accountChoice = s.nextInt();
@@ -144,6 +146,7 @@ public class Main {
                                                                 case 4:
                                                                 
                                                                     //deletion ng account (sure na ata pag di nag bug letse)
+                                                                    
                                                                     delete.deleteAccount();
                                                                     continue mainloop;
                                                                         

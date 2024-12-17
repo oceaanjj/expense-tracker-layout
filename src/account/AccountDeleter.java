@@ -1,5 +1,7 @@
 package account;
 
+import display.MyAccount;
+import display.clearScreen;
 import java.io.File;
 
 public class AccountDeleter extends AccountEditor {
@@ -8,21 +10,34 @@ public class AccountDeleter extends AccountEditor {
     public static final String ORANGE_TEXT = "\u001B[38;5;214m";
     private final Verification verifier = new Verification();
     private final Confirmation confirm = new Confirmation();
+    clearScreen clr = new clearScreen();
+    MyAccount myAccount = new MyAccount();
 
     public void deleteAccount() {
         while (true) {
+            
             try {
+                clr.clearScreen();
+                myAccount.header();
                 if (verifier.verifyEmail(this) && verifier.verifyPassword(this)) {
-                    if (confirm.confirmAction(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Are you sure you want to delete your account? (y/n): " + RESET)) {
+                    clr.clearScreen();
+                    myAccount.header();
+                    if (confirm.confirmAction(ORANGE_TEXT + "\t\t\t\t\t\t\t\t Are you sure you want to delete your account? (y/n): " + RESET)) {
                         deleteAllFiles();
                         return;
                     } else {
+                        clr.clearScreen();
+                        myAccount.header();
                         System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Account deletion cancelled." + RESET);
                     }
                 } else {
+                    clr.clearScreen();
+                    myAccount.header();
                     System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Verification failed. Account deletion aborted." + RESET);
                 }
             } catch (Exception e) {
+                clr.clearScreen();
+                myAccount.header();
                 System.out.println(" An error occurred during account deletion. "  + RESET);
             }
         }
