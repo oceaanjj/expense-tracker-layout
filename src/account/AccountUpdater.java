@@ -1,7 +1,7 @@
 package account;
 
+import display.MyAccount;
 import display.clearScreen;
-import display.myAccountHeader;
 import java.util.Scanner;
 
 
@@ -18,25 +18,27 @@ public class AccountUpdater extends AccountEditor {
     private final Scanner s = new Scanner(System.in);
     private final Confirmation confirm = new Confirmation();
     clearScreen clr = new clearScreen();
-    myAccountHeader myAccountHeader = new myAccountHeader();
+    MyAccount myAccount = new MyAccount();
 
     
     public void changeEmail() {
         while(true){
-            myAccountHeader.display();
-            System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t\tEnter your new email : " + RESET);
+            clr.clearScreen();
+            myAccount.header();
+            System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your email" +     RESET); ;
+            System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\tEnter your new email : " + RESET);
             String newEmail = s.nextLine();
         
             if(!newEmail.contains("@") || !newEmail.contains(".")) {
                 clr.clearScreen();
-                myAccountHeader.display();
+                myAccount.header();
                 System.out.print(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* REMINDER : Email should contain '@' and '.'" + RESET);
                 continue;
             }
             else{
                     if (isEmailInUse(newEmail)) {
                         clr.clearScreen();
-                        myAccountHeader.display();
+                        myAccount.header();
                         System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* The new email is already in use. Please try another email." + RESET);
                         changed = false;
                         continue;
@@ -46,7 +48,7 @@ public class AccountUpdater extends AccountEditor {
                         setNewEmail(newEmail);
                         if (!verifier.verifyEmail(this) || !verifier.verifyPassword(this)) {
                             clr.clearScreen();
-                            myAccountHeader.display();
+                            myAccount.header();
                             System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Verification failed. Cancelling email change." + RESET);
                             return;
                         }
@@ -65,13 +67,16 @@ public class AccountUpdater extends AccountEditor {
     }
 
     public void changePassword() {
-        System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t\t\tEnter your new password:" + RESET);
+        clr.clearScreen();
+        myAccount.header();
+        System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your password" +     RESET); ;
+        System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\t\tEnter your new password:" + RESET);
         String newPassword = s.nextLine();
         setNewPassword(newPassword);
 
         if (!verifier.verifyEmail(this) || !verifier.verifyPassword(this)) {
             clr.clearScreen();
-            myAccountHeader.display();
+            myAccount.header();
             System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\t* Verification failed. Cancelling password change." + RESET);
             return;
         }
@@ -81,19 +86,22 @@ public class AccountUpdater extends AccountEditor {
         }
         else {
             clr.clearScreen();
-            myAccountHeader.display();
+            myAccount.header();
             System.out.println("\t\t\t\t\t\t\t\t\tChanging account password cancelled.");
         }
     }
 
     public void changeIncome() {
-        System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\t\tEnter your new monthly income : " + RESET);
+        clr.clearScreen();
+        myAccount.header();
+        System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your income" +     RESET); ;
+        System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\t\tEnter your new monthly income : " + RESET);
         double newIncome = s.nextDouble();
         setMonthlyIncome(newIncome);
 
         if (!verifier.verifyEmail(this) || !verifier.verifyPassword(this)) {
             clr.clearScreen();
-            myAccountHeader.display();
+            myAccount.header();
             System.out.println(ORANGE_TEXT + "* Verification failed. Cancelling income change." + RESET);
             return;
         }
@@ -103,7 +111,7 @@ public class AccountUpdater extends AccountEditor {
         }
         else {
             clr.clearScreen();
-            myAccountHeader.display();
+            myAccount.header();
             System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\t* Changing monthly income cancelled." + RESET);
         }
     }
