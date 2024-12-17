@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 
 public class AccountEditor {
 
@@ -22,6 +24,7 @@ public class AccountEditor {
     boolean changed = false;
     MyAccount myAccount = new MyAccount();
     clearScreen clr = new clearScreen();
+    Scanner s = new Scanner(System.in);
 
     public void setEmail(String email) {
         this.email = email;
@@ -77,11 +80,13 @@ public class AccountEditor {
             clr.clearScreen();
             myAccount.header();
             System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tEmail changed successfully." + RESET);
-            
+            System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tpress enter to continue...");
+            s.nextLine();
         } else {
             clr.clearScreen();
             myAccount.header();
             System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\t* Can't change Email. Please try again." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tpress enter to continue...");
         }
     }
 

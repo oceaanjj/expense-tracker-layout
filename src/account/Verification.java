@@ -25,10 +25,8 @@ public class Verification {
      MyAccount myAccount = new MyAccount();
 
     public boolean verifyEmail(AccountEditor account) {
-        clr.clearScreen();
         while (true) {
-
-            myAccount.header();
+            //myAccount.header();
             System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\tEnter your registered email : " + RESET);
             String inputEmail = scanner.nextLine();
 
@@ -39,15 +37,16 @@ public class Verification {
             } else {
                 clr.clearScreen();
                 myAccount.header();
-                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t* Email does not match the registered email. Please try again." + RESET);
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\n* Email does not match the registered email. Please try again." + RESET);
             }
         }
     }
 
     public boolean verifyPassword(AccountEditor account) {
+        clr.clearScreen();
+        myAccount.header();
         while (true) {
-            clr.clearScreen();
-            myAccount.header();
+            
             System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\tEnter your account password : " + RESET);
             String inputPassword = scanner.nextLine();
 

@@ -19,24 +19,25 @@ public class AccountUpdater extends AccountEditor {
 
     
     public void changeEmail() {
+        clr.clearScreen();
+        myAccount.header();
+
         while(true){
-            clr.clearScreen();
-            myAccount.header();
-            System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your email" +     RESET); ;
+            //System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your email" +     RESET); ;
             System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\tEnter your new email : " + RESET);
             String newEmail = s.nextLine();
+            clr.clearScreen();
         
             if(!newEmail.contains("@") || !newEmail.contains(".")) {
-                clr.clearScreen();
                 myAccount.header();
-                System.out.print(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* REMINDER : Email should contain '@' and '.'" + RESET);
+                System.out.print(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t* REMINDER : Email should contain '@' and '.'" + RESET);
                 continue;
             }
             else{
                     if (isEmailInUse(newEmail)) {
                         clr.clearScreen();
                         myAccount.header();
-                        System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* The new email is already in use. Please try another email." + RESET);
+                        System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t* The new email is already in use. Please try another email." + RESET);
                         changed = false;
                         continue;
                     }
@@ -44,11 +45,11 @@ public class AccountUpdater extends AccountEditor {
                     
                         setNewEmail(newEmail);
                         clr.clearScreen();
-                            myAccount.header();
+                        myAccount.header();
                         if (!verifier.verifyEmail(this) || !verifier.verifyPassword(this)) {
-                            clr.clearScreen();
-                            myAccount.header();
-                            System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* Verification failed. Cancelling email change." + RESET);
+                            //clr.clearScreen();
+                            //myAccount.header();
+                            System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t\t* Verification failed. Cancelling email change." + RESET);
                             return;
                         }
 
@@ -57,7 +58,12 @@ public class AccountUpdater extends AccountEditor {
                             return;
                         }
                         else {
-                            System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\tChanging account email cancelled." + RESET);
+                            clr.clearScreen();
+                            myAccount.header();
+                            System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\tChanging account email cancelled." + RESET);
+                            System.out.println("\n\n\t\t\t\t\t\t\tpress enter to continue...");
+                            s.nextLine();
+                            
                             return;
                         }
                     }

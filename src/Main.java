@@ -53,13 +53,13 @@ public class Main {
 
         
         //start
-        clr.clearScreen();
-        art.display();
-        load.loading();
-        clr.clearScreen();
+        //clr.clearScreen();
+        //art.display();
+        //load.loading();
+        //clr.clearScreen();
 
         //displaying intro title
-        intro.display(); 
+        //intro.display(); 
 
         
        mainloop : while (true) {
