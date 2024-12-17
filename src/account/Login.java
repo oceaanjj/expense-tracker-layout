@@ -52,7 +52,7 @@ public class Login {
 
     public boolean userLogin() {
         
-        while (true) {
+        main : while (true) {
             try {
                 clr.clearScreen();
                 loginDisplay.display();
@@ -72,16 +72,25 @@ public class Login {
                 } else {
                     clr.clearScreen();
                     loginDisplay.display();
-                    System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t    * Login failed: Incorrect email or password. " + RESET);
-                    System.out.print("\t\t\t\t\t\t\t\t       do you want to try again? (yes/no) : ");
-                    String tryAgain = s.nextLine();
+                    System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t     * Login failed: Incorrect email or password. " + RESET);
+                    tryagain : while (true) {
+                        System.out.print("\t\t\t\t\t\t\t\t     do you want to try again? (yes/no) : ");
+                        String tryAgain = s.nextLine();
 
-                        if (tryAgain.equalsIgnoreCase("no")) {
-                            return false;
-                        }
-                        else if (tryAgain.equalsIgnoreCase("yes")) {
-                            continue;
-                        }
+                            if (tryAgain.equalsIgnoreCase("no")) {
+                                return false;
+                            }
+                            else if (tryAgain.equalsIgnoreCase("yes")) {
+                                continue main;
+                            }
+                            else{
+                                clr.clearScreen();
+                                loginDisplay.display();
+                                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t      * Invalid input. Please try again." + RESET);
+
+                                continue tryagain;
+                            }
+                    }
                 }
             } catch (Exception e) {
                 clr.clearScreen();
