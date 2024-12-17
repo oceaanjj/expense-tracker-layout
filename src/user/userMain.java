@@ -33,50 +33,50 @@ public class userMain {
 
     public void startExpenseTracker(Savings savings, Needs needs, Wants wants) {
         Scanner s = new Scanner(System.in);
+    
+        // Check if the user's income is 0
+        double income = userIncome();
+        if (income <= 0) {
+            System.out.println("Income is 0 or invalid. Exiting the expense tracker.");
+            return; // Exit the method early
+        }
+    
         boolean normal = false;
-        boolean trial = true;
-
-        // check if its first day of the month
+    
+        // Check if it's the first day of the month
         if (day.isFirstDayOfMonth(todayDate)) {
             firstDayofMonth();
-            normal = true;
-
-        } else {
-            normal = true;
         }
+    
+        normal = true;
+    
         if (normal) {
-            // layout
+            // Layout
             menu.header();
             menu.menu();
-            // System.out.println("[1] NEEDS");
-            // System.out.println("[2] WANTS");
-            // System.out.println("[3] SAVINGS");
-            // System.out.println("[4] EXIT");
-            
+    
             System.out.println("Enter your choice : ");
             int choice = s.nextInt();
-
+    
             switch (choice) {
                 case 1:
-                    // Needs needs = new Needs();
                     needs.needs();
                     break;
                 case 2:
-                    // Wants wants = new Wants();
                     wants.wants();
                     break;
                 case 3:
-                    // Savings savings = new Savings(); kailangan iget yung instance sa main para
-                    // hindi mag null yung email
                     savings.addSavings();
                     break;
                 case 4:
                     System.out.println("EXIT");
                     break;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
             }
         }
-
     }
+    
 
     public void firstDayofMonth() {
         Scanner s = new Scanner(System.in);
