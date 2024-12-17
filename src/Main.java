@@ -55,7 +55,7 @@ public class Main {
         //start
         clr.clearScreen();
         art.display();
-        //load.loading();
+        load.loading();
         clr.clearScreen();
 
         //displaying intro title
