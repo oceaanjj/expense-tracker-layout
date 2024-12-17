@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import display.needsMenu;
 
@@ -72,30 +73,57 @@ public class Needs {
             System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter your choice : " + RESET);
             int choice = s.nextInt();
 
+
+            // Check if the user income is zero
+            double currentIncome = userIncome();
+            if (currentIncome <= 0) {
+                System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Your income for this month has been fully spent." + RESET);
+                System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   You cannot add any more expenses." + RESET);
+                System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Press enter to exit." + RESET);
+                s.nextLine();
+                s.nextLine(); 
+                return;
+            }
+
             switch (choice) {
                 case 1:
                     menu.foods();
-                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on food : " + RESET);
-                    double food = s.nextDouble();
-                    setFood(food);
-                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter name (e.g. fries, burger etc.) : " + RESET);
-                    s.nextLine();
-                    String name = s.nextLine();
-                    updateUserFile("Food", food, name);
-
-                    updateUserIncome(userIncome() - getFood());
+                    while (true) {
+                        try {
+                            System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on food : " + RESET);
+                            double food = s.nextDouble();
+                            setFood(food);
+                            s.nextLine();
+                            System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter name (e.g. fries, burger etc.) : " + RESET);
+                            String name = s.nextLine();
+                            updateUserFile("Food", food, name);
+                            updateUserIncome(userIncome() - getFood());
+                            break; 
+                        } catch (InputMismatchException e) {
+                            System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Invalid input! Please enter a valid number." + RESET);
+                            s.nextLine(); 
+                        }
+                    }
                     break;
+                
                 case 2:
                     menu.transportation();
-                    System.out.print( GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on transportation : " + RESET);
-                    double transportation = s.nextDouble();
-                    setTransportation(transportation);
-                    s.nextLine();
-                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter name (e.g. bus, taxi etc.) : " + RESET);
-                    String name1 = s.nextLine();
-
-                    updateUserIncome(userIncome() - getTransportation());
-                    updateUserFile("Transportation", transportation, name1);
+                    while (true) {
+                        try {
+                            System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on transportation : " + RESET);
+                            double transportation = s.nextDouble();
+                            setTransportation(transportation);
+                            s.nextLine(); 
+                            System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter name (e.g. bus, taxi etc.) : " + RESET);
+                            String name1 = s.nextLine();
+                            updateUserIncome(userIncome() - getTransportation());
+                            updateUserFile("Transportation", transportation, name1);
+                            break;
+                        } catch (InputMismatchException e) {
+                            System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Invalid input! Please enter a valid number." + RESET);
+                            s.nextLine(); 
+                        }
+                    }
                     break;
                 case 3:
                     // paid = false;
@@ -106,56 +134,82 @@ public class Needs {
                     switch (choice1) {
                         case 1:
                             menu.electricity();
-                            System.out.print(GREEN_TEXT+ "\n\t\t\t\t\t\t\t   Enter the amount you spent on electricity : " + RESET);
-                            double bills = s.nextDouble();
-                            setBills(bills);
-                            updateUserIncome(userIncome() - getBills());
-                            updateBillStatus("ElectricityPaid", true);
-                            updateUserFile("Electricity", bills, "N/A");
-                            s.nextLine();
-                            break;
+                            while (true) {
+                                try {
+                                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on electricity : " + RESET);
+                                    double bills = s.nextDouble();
+                                    setBills(bills);
+                                    updateUserIncome(userIncome() - getBills());
+                                    updateBillStatus("ElectricityPaid", true);
+                                    updateUserFile("Electricity", bills, "N/A");
+                                    break;
+                                } catch (InputMismatchException e) {
+                                    System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Invalid input! Please enter a valid number." + RESET);
+                                    s.nextLine();
+                                }
+                            }
                         case 2:
-                            menu.water();
-                            System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on water : " + RESET);
-                            bills = s.nextDouble();
-                            setBills(bills);
-                            updateUserIncome(userIncome() - getBills());
-                            updateBillStatus("WaterPaid", true);
-                            updateUserFile("Water", bills, "N/A");
-
-                            break;
+                        menu.water();
+                        while (true) {
+                            try {
+                                System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on water : " + RESET);
+                                double bills = s.nextDouble();
+                                setBills(bills);
+                                updateUserIncome(userIncome() - getBills());
+                                updateBillStatus("WaterPaid", true);
+                                updateUserFile("Water", bills, "N/A");
+                                break; 
+                            } catch (InputMismatchException e) {
+                                System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Invalid input! Please enter a valid number." + RESET);
+                                s.nextLine(); 
+                            }
+                        }
+                        break;
                         case 3:
-                            menu.internet();
-                            System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on internet : " + RESET);
-                            bills = s.nextDouble();
-                            setBills(bills);
-                            updateBillStatus("InternetPaid", true);
-                            updateUserIncome(userIncome() - getBills());
-                            updateUserFile("Internet", bills, "N/A");
-                            break;
+                        while (true) {
+                            try {
+                                System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on internet : " + RESET);
+                                double bills = s.nextDouble();
+                                setBills(bills);
+                                updateUserIncome(userIncome() - getBills());
+                                updateBillStatus("InternetPaid", true);
+                                updateUserFile("Internet", bills, "N/A");
+                                break;
+                            } catch (InputMismatchException e) {
+                                System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Invalid input! Please enter a valid number." + RESET);
+                                s.nextLine(); 
+                            }
+                        }
+                        break;
                         case 4:
                             menu.rent();
-                            System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on rent : "+ RESET);
-                            bills = s.nextDouble();
-                            setBills(bills);
-                            updateBillStatus("RentPaid", true);
-                            updateUserIncome(userIncome() - getBills());
-                            updateUserFile("Rent", bills, "N/A");
-
-                            break;
+                            while (true) {
+                                try {
+                                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on rent : " + RESET);
+                                    double bills = s.nextDouble();
+                                    setBills(bills);
+                                    updateUserIncome(userIncome() - getBills());
+                                    updateBillStatus("RentPaid", true);
+                                    updateUserFile("Rent", bills, "N/A");
+                                    break; 
+                                } catch (InputMismatchException e) {
+                                    System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Invalid input! Please enter a valid number." + RESET);
+                                    s.nextLine(); 
+                                }
+                            }
                         case 5:
-                        System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   EXIT"+ RESET);
-                        break;
+                            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   EXIT" + RESET);
+                            break;
                     }
                     break;
                 case 4:
-                   System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   EXIT"+ RESET);
+                    System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   EXIT" + RESET);
                     return;
                 default:
                     System.out.println(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Invalid choice! Please try again." + RESET);
                     break;
             }
-            
+
         } // end of loop
 
     }
@@ -171,7 +225,7 @@ public class Needs {
         File file = new File(directory, getEmail() + ".txt");
 
         if (!file.exists()) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Login failed: Account does not exist." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Login failed: Account does not exist." + RESET);
             return -1;
         }
 
@@ -184,12 +238,12 @@ public class Needs {
                 userTxtFile.add(line.trim());
             }
         } catch (IOException ex) {
-           System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error reading file." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error reading file." + RESET);
             return -1;
         }
 
         if (userTxtFile.size() < 4) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error: File does not contain enough lines." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error: File does not contain enough lines." + RESET);
             return -1;
         }
 
@@ -199,7 +253,7 @@ public class Needs {
 
             return Double.parseDouble(incomeLine);
         } catch (NumberFormatException e) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error: The income value is not a valid number." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error: The income value is not a valid number." + RESET);
             return -1;
         }
     }
@@ -209,7 +263,7 @@ public class Needs {
         File file = new File(directory, getEmail() + ".txt");
 
         if (!file.exists()) {
-           System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Account does not exist." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Account does not exist." + RESET);
             return false;
         }
 
@@ -222,12 +276,12 @@ public class Needs {
                 userTxtFile.add(line.trim());
             }
         } catch (IOException ex) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error reading file." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error reading file." + RESET);
             return false;
         }
 
         if (userTxtFile.size() < 4) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error: File does not contain enough lines." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error: File does not contain enough lines." + RESET);
             return false;
         }
 
@@ -239,11 +293,11 @@ public class Needs {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error writing to file." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error writing to file." + RESET);
             return false;
         }
 
-        System.out.print(GREEN_TEXT+"\n\t\t\t\t\t\t\t   Income updated successfully!" + RESET);
+        System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Income updated successfully!" + RESET);
 
         return true;
     }
@@ -253,7 +307,7 @@ public class Needs {
         File file = new File(directory, getEmail() + ".txt");
 
         if (!file.exists()) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Account does not exist." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Account does not exist." + RESET);
             return;
         }
 
@@ -265,7 +319,7 @@ public class Needs {
                 userTxtFile.add(line.trim());
             }
         } catch (IOException ex) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error reading file." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error reading file." + RESET);
             return;
         }
 
@@ -295,7 +349,7 @@ public class Needs {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error writing to file." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error writing to file." + RESET);
         }
     }
 
@@ -304,7 +358,7 @@ public class Needs {
         File file = new File(directory, getEmail() + ".txt");
 
         if (!file.exists()) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Account does not exist." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Account does not exist." + RESET);
             return;
         }
 
@@ -316,7 +370,7 @@ public class Needs {
                 userTxtFile.add(line.trim());
             }
         } catch (IOException ex) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error reading file." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error reading file." + RESET);
             return;
         }
 
@@ -330,10 +384,11 @@ public class Needs {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error writing to file." + RESET);
+            System.out.print(ORANGE_TEXT + "\n\t\t\t\t\t\t\t   Error writing to file." + RESET);
         }
 
-        System.out.print(GREEN_TEXT+detailType +"\n\t\t\t\t\t\t\t   has been successfully added to the table." + RESET);
+        System.out.print(
+                GREEN_TEXT + detailType + "\n\t\t\t\t\t\t\t   has been successfully added to the table." + RESET);
     }
 
 }
