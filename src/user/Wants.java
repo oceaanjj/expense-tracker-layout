@@ -8,14 +8,19 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import display.wantsMenu;
 
 public class Wants {
+    private static final String RESET = "\u001B[0m";
+    public static final String GREEN_TEXT = "\u001B[32m";
+    public static final String ORANGE_TEXT = "\u001B[38;5;214m";
     private String email;
     private double shopping;
     private double stuffs;
     private double gadgets;
     private double travel;
     private double uncategorized;
+    wantsMenu menu = new wantsMenu();
 
     public void setShopping(double shopping) {
         this.shopping = shopping;
@@ -68,25 +73,20 @@ public class Wants {
     public void wants() {
         Scanner s = new Scanner(System.in);
 
-        wantsLoop : while (true) {
-            System.out.println("WANTS");
-            System.out.println("[1] SHOPPING");
-            System.out.println("[2] STUFFS");
-            System.out.println("[3] GADGETS");
-            System.out.println("[4] TRAVEL");
-            System.out.println("[5] UNCATEGORIZED");
-            System.out.println("[6] BACK");
-            System.out.print("Enter your choice: ");
+        wantsLoop: while (true) {
+            menu.header();
+            menu.menu();
+            System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter your choice: " + RESET);
             int choice = s.nextInt();
 
             switch (choice) {
                 case 1:
-                    System.out.println("SHOPPING");
-                    System.out.print("Enter the amount you spent on shopping: ");
+                    menu.shopping();
+                     System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on shopping: " + RESET);
                     double shopping = s.nextDouble();
                     setShopping(shopping);
                     s.nextLine();
-                    System.out.print("Enter details (e.g. clothes, accessories): ");
+                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter details (e.g. clothes, accessories): "+ RESET);
                     String shoppingDetails = s.nextLine();
 
                     updateUserIncome(userIncome() - getShopping());
@@ -94,12 +94,13 @@ public class Wants {
                     break;
 
                 case 2:
-                    System.out.println("STUFFS");
-                    System.out.print("Enter the amount you spent on stuffs: ");
+                    menu.stuffs();
+                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on stuffs: " + RESET);
                     double stuffs = s.nextDouble();
                     setStuffs(stuffs);
+
                     s.nextLine();
-                    System.out.print("Enter details (e.g. furniture, toys): ");
+                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter details (e.g. furniture, toys): "+ RESET);
                     String stuffsDetails = s.nextLine();
 
                     updateUserIncome(userIncome() - getStuffs());
@@ -107,12 +108,12 @@ public class Wants {
                     break;
 
                 case 3:
-                    System.out.println("GADGETS");
-                    System.out.print("Enter the amount you spent on gadgets: ");
+                    menu.gadgets();
+                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on gadgets: "+ RESET);
                     double gadgets = s.nextDouble();
                     setGadgets(gadgets);
                     s.nextLine();
-                    System.out.print("Enter details (e.g. phone, tablet): ");
+                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter details (e.g. phone, tablet): "+ RESET);
                     String gadgetsDetails = s.nextLine();
 
                     updateUserIncome(userIncome() - getGadgets());
@@ -120,12 +121,12 @@ public class Wants {
                     break;
 
                 case 4:
-                    System.out.println("TRAVEL");
-                    System.out.print("Enter the amount you spent on travel: ");
+                    menu.travel();
+                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on travel: "+ RESET);
                     double travel = s.nextDouble();
                     setTravel(travel);
                     s.nextLine();
-                    System.out.print("Enter details (e.g. vacation, road trip): ");
+                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter details (e.g. vacation, road trip): "+ RESET);
                     String travelDetails = s.nextLine();
 
                     updateUserIncome(userIncome() - getTravel());
@@ -133,12 +134,12 @@ public class Wants {
                     break;
 
                 case 5:
-                    System.out.println("UNCATEGORIZED");
-                    System.out.print("Enter the amount you spent on uncategorized wants: ");
+                    menu.uncategorized();
+                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter the amount you spent on uncategorized wants: "+ RESET);
                     double uncategorized = s.nextDouble();
                     setUncategorized(uncategorized);
                     s.nextLine();
-                    System.out.print("Enter details: ");
+                    System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter details: "+ RESET);
                     String uncategorizedDetails = s.nextLine();
 
                     updateUserIncome(userIncome() - getUncategorized());
@@ -149,17 +150,25 @@ public class Wants {
                     break wantsLoop;
 
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Invalid choice. Please try again."+ RESET);
             }
         }
     }
+    
+
+
+
+
+
+
+
 
     public double userIncome() {
         String directory = System.getProperty("user.dir") + "/src/database/accounts";
         File file = new File(directory, getEmail() + ".txt");
 
         if (!file.exists()) {
-            System.out.println("Login failed: Account does not exist.");
+            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Login failed: Account does not exist." + RESET);
             return -1;
         }
 
@@ -167,35 +176,53 @@ public class Wants {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
+
             while ((line = reader.readLine()) != null) {
                 userTxtFile.add(line.trim());
             }
         } catch (IOException ex) {
-            System.out.println("Error ! Can't save changes. Please try again.");
+           System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error reading file." + RESET);
             return -1;
         }
 
         if (userTxtFile.size() < 4) {
-            System.out.println("Error ! Can't save changes. Please try again.");
+            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error: File does not contain enough lines." + RESET);
             return -1;
         }
 
         String incomeLine = userTxtFile.get(3);
 
         try {
+
             return Double.parseDouble(incomeLine);
         } catch (NumberFormatException e) {
-            System.out.println("Error ! Can't save changes. Please try again.");
+            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error: The income value is not a valid number." + RESET);
             return -1;
         }
     }
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public boolean updateUserIncome(double newIncome) {
         String directory = System.getProperty("user.dir") + "/src/database/accounts";
         File file = new File(directory, getEmail() + ".txt");
 
         if (!file.exists()) {
-            System.out.println("Account does not exist.");
+           System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Account does not exist." + RESET);
             return false;
         }
 
@@ -203,16 +230,17 @@ public class Wants {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
+
             while ((line = reader.readLine()) != null) {
                 userTxtFile.add(line.trim());
             }
         } catch (IOException ex) {
-            System.out.println("Error ! Can't save changes. Please try again.");
+            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error reading file." + RESET);
             return false;
         }
 
         if (userTxtFile.size() < 4) {
-            System.out.println("Error ! Can't save changes. Please try again.");
+            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error: File does not contain enough lines." + RESET);
             return false;
         }
 
@@ -224,19 +252,31 @@ public class Wants {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.out.println("Error ! Can't save changes. Please try again.");
+            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error writing to file." + RESET);
             return false;
         }
 
+        System.out.print(GREEN_TEXT+"\n\t\t\t\t\t\t\t   Income updated successfully!" + RESET);
         return true;
     }
+
+
+
+
+
+
+
+
+
+
+    
 
     private void updateUserFile(String detailType, double amount, String additionalInfo) {
         String directory = System.getProperty("user.dir") + "/src/database/wants";
         File file = new File(directory, getEmail() + ".txt");
 
         if (!file.exists()) {
-            System.out.println("Account does not exist.");
+            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Account does not exist." + RESET);
             return;
         }
 
@@ -248,7 +288,7 @@ public class Wants {
                 userTxtFile.add(line.trim());
             }
         } catch (IOException ex) {
-            System.out.println("Error ! Can't save changes. Please try again.");
+            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error reading file." + RESET);
             return;
         }
 
@@ -261,9 +301,9 @@ public class Wants {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.out.println("Error ! Can't save changes. Please try again.");
+            System.out.print(ORANGE_TEXT+"\n\t\t\t\t\t\t\t   Error writing to file." + RESET);
         }
 
-        System.out.println(detailType + " has been successfully added to the table.");
+        System.out.print(GREEN_TEXT+detailType +"\n\t\t\t\t\t\t\t   has been successfully added to the table." + RESET);
     }
 }

@@ -10,12 +10,12 @@ public class needsMenu {
 
     public void header() {
         clr.clearScreen();
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t  _   _               _     " + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t | \\ | | ___  ___  __| |___ " + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t |  \\| |/ _ \\/ _ \\/ _` / __|" + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t | |\\  |  __/  __/ (_| \\__ \\" + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t |_| \\_|\\___|\\___|\\__,_|___/" + RESET);
-        System.out.println(YELLOW + "\t\t\t\t\t\t\t                            " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t\t  _   _               _     " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t\t | \\ | | ___  ___  __| |___ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t\t |  \\| |/ _ \\/ _ \\/ _` / __|" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t\t | |\\  |  __/  __/ (_| \\__ \\" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t\t |_| \\_|\\___|\\___|\\__,_|___/" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t\t                            " + RESET);
     }
 
     public void menu() {
@@ -27,6 +27,97 @@ public class needsMenu {
         System.out.println("\t\t\t\t\t\t\t\t║ [3] BILLS                         ║");
         System.out.println("\t\t\t\t\t\t\t\t║ [4] BACK                          ║");
         System.out.println("\t\t\t\t\t\t\t\t╚═══════════════════════════════════╝");
+
+    }
+
+    public void foods() {
+        clr.clearScreen();
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t  _____                  _      " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t |  ___|___    ___    __| | ___ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t | |_  / _ \\  / _ \\  / _` |/ __|" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t |  _|| (_) || (_) || (_| |\\__ \\" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t |_|   \\___/  \\___/  \\__,_||___/" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t                                 " + RESET);
+    }
+
+    public void transportation() {
+        clr.clearScreen();
+        System.out.println(YELLOW + "\t\t\t\t  _____                                             _          _    _               " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t |_   _|_ __  __ _  _ __   ___  _ __    ___   _ __ | |_  __ _ | |_ (_)  ___   _ __  " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t   | | | '__|/ _` || '_ \\ / __|| '_ \\  / _ \\ | '__|| __|/ _` || __|| | / _ \\ | '_ \\ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t   | | | |  | (_| || | | |\\__ \\| |_) || (_) || |   | |_| (_| || |_ | || (_) || | | |" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t   |_| |_|   \\__,_||_| |_||___/| .__/  \\___/ |_|    \\__|\\__,_| \\__||_| \\___/ |_| |_|" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t                               |_|                                                  " + RESET);
+        
+    }
     
+    public void bills() {
+        clr.clearScreen();
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t  ____   _  _  _      " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t | __ ) (_)| || | ___ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t |  _ \\ | || || |/ __|" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t | |_) || || || |\\__ \\" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t |____/ |_||_||_||___/" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t\t\t                      " + RESET);
+
+
+        System.out.println("\t\t\t\t\t\t\t\t╔═══════════════════════════════════╗");
+        System.out.println("\t\t\t\t\t\t\t\t║              MENU                 ║");
+        System.out.println("\t\t\t\t\t\t\t\t╠═══════════════════════════════════╣");
+        System.out.println("\t\t\t\t\t\t\t\t║ [1] ELECTRICITY                   ║");
+        System.out.println("\t\t\t\t\t\t\t\t║ [2] WATER                         ║");
+        System.out.println("\t\t\t\t\t\t\t\t║ [3] INTERNET                      ║");
+        System.out.println("\t\t\t\t\t\t\t\t║ [4] RENT                          ║");
+        System.out.println("\t\t\t\t\t\t\t\t║ [5] EXIT                          ║");
+        System.out.println("\t\t\t\t\t\t\t\t╚═══════════════════════════════════╝");
+        
+
+
+    }
+
+    public void electricity() {
+        clr.clearScreen();
+        System.out.println(YELLOW + "\t\t\t\t\t\t  _____  _              _          _        _  _          " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t | ____|| |  ___   ___ | |_  _ __ (_)  ___ (_)| |_  _   _ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t |  _|  | | / _ \\ / __|| __|| '__|| | / __|| || __|| | | |" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t | |___ | ||  __/| (__ | |_ | |   | || (__ | || |_ | |_| |" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t |_____||_| \\___| \\___| \\__||_|   |_| \\___||_| \\__| \\__, |" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t                                                    |___/ " + RESET);
+        
+
+    }
+
+    public void internet() {
+        clr.clearScreen();
+        System.out.println(YELLOW + "\t\t\t\t\t\t  ___         _                            _   " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t |_ _| _ __  | |_  ___  _ __  _ __    ___ | |_ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t  | | | '_ \\ | __|/ _ \\| '__|| '_ \\  / _ \\| __|" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t  | | | | | || |_|  __/| |   | | | ||  __/| |_ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t |___||_| |_| \\__|\\___||_|   |_| |_| \\___| \\__|" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t                                               " + RESET);
+        
+
+    }
+
+    public void water() {
+        clr.clearScreen();
+        System.out.println(YELLOW + "\t\t\t\t\t\t __        __      _              " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t \\ \\      / /__ _ | |_  ___  _ __ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t  \\ \\ /\\ / // _` || __|/ _ \\| '__|" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t   \\ V  V /| (_| || |_|  __/| |   " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t    \\_/\\_/  \\__,_| \\__|\\___||_|   " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t                                  " + RESET);
+        
+    }
+
+    public void rent() {
+        clr.clearScreen();
+        System.out.println(YELLOW + "\t\t\t\t\t\t  ____               _   " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t |  _ \\  ___  _ __  | |_ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t | |_) |/ _ \\| '_ \\ | __|" + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t |  _ <|  __/| | | || |_ " + RESET);
+        System.out.println(YELLOW + "\t\t\t\t\t\t |_| \\_\\\\___||_| |_| \\__|" + RESET);
+        
+        
     }
 }
