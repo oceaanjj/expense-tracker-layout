@@ -3,6 +3,8 @@ package account;
 import display.MyAccount;
 import display.clearScreen;
 import java.util.Scanner;
+import java.util.InputMismatchException;
+
 
 
     /* 
@@ -109,35 +111,37 @@ public class AccountUpdater extends AccountEditor {
         clr.clearScreen();
         myAccount.header();
 
-        while(true){
-        //System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your income" +     RESET); ;
-        System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\t\tEnter your new monthly income : " + RESET);
-        double newIncome = s.nextDouble();
-        setMonthlyIncome(newIncome);
+        try {
+            // System.out.println(YELLOW_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\tChange your income" + RESET);
+            System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\t\tEnter your new monthly income : " + RESET);
+            double newIncome = s.nextDouble();
+            setMonthlyIncome(newIncome);
 
-        clr.clearScreen();
-        myAccount.header();
-
-        if (!verifier.verifyEmail(this) || !verifier.verifyPassword(this)) {
-            System.out.println(ORANGE_TEXT + "* Verification failed. Cancelling income change." + RESET);
-            System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
-            s.nextLine();
-            return;
-        }
-
-        if (confirm.confirmAction("\t\t\t\t\t\t\t\tAre you sure you want to change your email? (y/n): ")) {
-            updateIncome();
-            return;
-        }
-        else {
             clr.clearScreen();
             myAccount.header();
-            System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\t* Changing monthly income cancelled." + RESET);
-            System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
-             s.nextLine();
-             return;
+
+            if (!verifier.verifyEmail(this) || !verifier.verifyPassword(this)) {
+                System.out.println(ORANGE_TEXT + "* Verification failed. Cancelling income change." + RESET);
+                System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
+                s.nextLine();
+                return;
+            }
+
+            if (confirm.confirmAction("\t\t\t\t\t\t\t\tAre you sure you want to change your email? (y/n): ")) {
+                updateIncome();
+                return;
+            } else {
+                clr.clearScreen();
+                myAccount.header();
+                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\t* Changing monthly income cancelled." + RESET);
+                System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
+                s.nextLine(); 
+                return;
+            }
+        } catch (InputMismatchException e) {
+            System.out.println(ORANGE_TEXT + "* Invalid input. Please enter a numeric value for income." + RESET);
+            s.nextLine(); 
         }
-    }
     }
 
 }
