@@ -10,10 +10,7 @@ import java.util.Scanner;
        ( called in our main ) it is connected to Editor ( the one that had access to txt files)
     */
 public class AccountUpdater extends AccountEditor {
-    public static final String GREEN_TEXT = "\u001B[32m"; 
-    public static final String RESET = "\u001B[0m";
-    public static final String ORANGE_TEXT = "\u001B[38;5;214m";
-    public static final String YELLOW_TEXT = "\u001B[33m";
+    
     private final Verification verifier = new Verification();
     private final Scanner s = new Scanner(System.in);
     private final Confirmation confirm = new Confirmation();
@@ -46,6 +43,8 @@ public class AccountUpdater extends AccountEditor {
                     else{
                     
                         setNewEmail(newEmail);
+                        clr.clearScreen();
+                            myAccount.header();
                         if (!verifier.verifyEmail(this) || !verifier.verifyPassword(this)) {
                             clr.clearScreen();
                             myAccount.header();

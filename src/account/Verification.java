@@ -1,5 +1,7 @@
 package account;
 
+import display.MyAccount;
+import display.clearScreen;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -19,10 +21,15 @@ public class Verification {
     public static final String ORANGE_TEXT = "\u001B[38;5;214m";
     public static final String YELLOW_TEXT = "\u001B[33m";
     private final Scanner scanner = new Scanner(System.in);
+    clearScreen clr = new clearScreen();
+     MyAccount myAccount = new MyAccount();
 
     public boolean verifyEmail(AccountEditor account) {
+        clr.clearScreen();
         while (true) {
-            System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\t\tEnter your registered email : " + RESET);
+
+            myAccount.header();
+            System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\tEnter your registered email : " + RESET);
             String inputEmail = scanner.nextLine();
 
             account.setEmail(inputEmail);
@@ -30,14 +37,18 @@ public class Verification {
             if (isCorrectEmail(account)) {
                 return true; 
             } else {
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\t* Email does not match the registered email. Please try again." + RESET);
+                clr.clearScreen();
+                myAccount.header();
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t* Email does not match the registered email. Please try again." + RESET);
             }
         }
     }
 
     public boolean verifyPassword(AccountEditor account) {
         while (true) {
-            System.out.print(GREEN_TEXT + "\t\t\t\t\t\t\t\t\tEnter your account password : " + RESET);
+            clr.clearScreen();
+            myAccount.header();
+            System.out.print(GREEN_TEXT + "\n\n\t\t\t\t\t\t\t\tEnter your account password : " + RESET);
             String inputPassword = scanner.nextLine();
 
             account.setPassword(inputPassword);
@@ -45,7 +56,9 @@ public class Verification {
             if (isCorrectPassword(account)) {
                 return true; 
             } else {
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\t* Incorrect password. Please try again." + RESET);
+                clr.clearScreen();
+                myAccount.header();
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t* Incorrect password. Please try again." + RESET);
             }
         }
     }
@@ -72,7 +85,9 @@ public class Verification {
             if (line1 != null && line2 != null) {
                 return line2.equals(account.getPassword()); 
             } else {
-                System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t\t* File does not contain sufficient data." + RESET);
+                clr.clearScreen();
+                myAccount.header();
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t* File does not contain sufficient data." + RESET);
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -118,6 +118,8 @@ public class Main {
                                                     case 1:
                                                         /*myAccountmenu :*/ while (true) {
                                                             clr.clearScreen();
+                                                            myAccount.header();
+                                                            System.out.println("\n\n");
                                                             myAccount.display();
                                                             System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter choice : " + RESET );
                                                             int accountChoice = s.nextInt();
