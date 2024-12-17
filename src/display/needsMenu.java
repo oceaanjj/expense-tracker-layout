@@ -31,6 +31,7 @@ public class needsMenu {
     }
 
     public void foods() {
+        clr.clearScreen();
         System.out.println(YELLOW + "\t\t\t\t\t\t\t\t  _____                  _      " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t\t\t |  ___|___    ___    __| | ___ " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t\t\t | |_  / _ \\  / _ \\  / _` |/ __|" + RESET);
@@ -40,6 +41,7 @@ public class needsMenu {
     }
 
     public void transportation() {
+        clr.clearScreen();
         System.out.println(YELLOW + "\t\t\t\t  _____                                             _          _    _               " + RESET);
         System.out.println(YELLOW + "\t\t\t\t |_   _|_ __  __ _  _ __   ___  _ __    ___   _ __ | |_  __ _ | |_ (_)  ___   _ __  " + RESET);
         System.out.println(YELLOW + "\t\t\t\t   | | | '__|/ _` || '_ \\ / __|| '_ \\  / _ \\ | '__|| __|/ _` || __|| | / _ \\ | '_ \\ " + RESET);
@@ -50,6 +52,7 @@ public class needsMenu {
     }
     
     public void bills() {
+        clr.clearScreen();
         System.out.println(YELLOW + "\t\t\t\t\t\t\t\t  ____   _  _  _      " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t\t\t | __ ) (_)| || | ___ " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t\t\t |  _ \\ | || || |/ __|" + RESET);
@@ -73,6 +76,7 @@ public class needsMenu {
     }
 
     public void electricity() {
+        clr.clearScreen();
         System.out.println(YELLOW + "\t\t\t\t\t\t  _____  _              _          _        _  _          " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t | ____|| |  ___   ___ | |_  _ __ (_)  ___ (_)| |_  _   _ " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t |  _|  | | / _ \\ / __|| __|| '__|| | / __|| || __|| | | |" + RESET);
@@ -84,6 +88,7 @@ public class needsMenu {
     }
 
     public void internet() {
+        clr.clearScreen();
         System.out.println(YELLOW + "\t\t\t\t\t\t  ___         _                            _   " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t |_ _| _ __  | |_  ___  _ __  _ __    ___ | |_ " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t  | | | '_ \\ | __|/ _ \\| '__|| '_ \\  / _ \\| __|" + RESET);
@@ -95,6 +100,7 @@ public class needsMenu {
     }
 
     public void water() {
+        clr.clearScreen();
         System.out.println(YELLOW + "\t\t\t\t\t\t __        __      _              " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t \\ \\      / /__ _ | |_  ___  _ __ " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t  \\ \\ /\\ / // _` || __|/ _ \\| '__|" + RESET);
@@ -105,6 +111,7 @@ public class needsMenu {
     }
 
     public void rent() {
+        clr.clearScreen();
         System.out.println(YELLOW + "\t\t\t\t\t\t  ____               _   " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t |  _ \\  ___  _ __  | |_ " + RESET);
         System.out.println(YELLOW + "\t\t\t\t\t\t | |_) |/ _ \\| '_ \\ | __|" + RESET);
