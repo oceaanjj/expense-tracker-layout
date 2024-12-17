@@ -2,6 +2,7 @@ package account;
 
 import display.LoginDisplay;
 import display.clearScreen;
+import display.warning;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -28,6 +29,7 @@ public class Login {
     Needs needs = new Needs();
     clearScreen clr = new clearScreen();
     LoginDisplay loginDisplay = new LoginDisplay();
+    warning warn = new warning();
 
     public Login() {
         s = new Scanner(System.in);
@@ -142,10 +144,13 @@ public class Login {
             if (fileEmail.equals(email) && filePassword.equals(password)) {
                 setEmail(email);
                 setPassword(password);
-                checkDueDates(userTxtFile);
                 clr.clearScreen();
                 loginDisplay.display();
                 System.out.println(GREEN_TEXT + "\t\t\t\t\t\t\t\t\t\tLogin successful!" + RESET);
+                System.out.println("\n\t\t\t\t\t\t\t\t\t   press enter to continue....");
+                s.nextLine();
+                clr.clearScreen();
+                checkDueDates(userTxtFile);
                 System.out.println("\n\t\t\t\t\t\t\t\t\t   press enter to continue....");
                 s.nextLine();
                 return true;  
@@ -189,6 +194,7 @@ public class Login {
     
 
                     if (dueMonthDay.equals(todayMonthDay)) {
+                        warn.display();
                         System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\t\t* REMINDER : " + dueDates[i - 4] + " payment is due today!" + RESET);
                     }
                     else if (daysUntilDue > 0 && daysUntilDue <= 7) {

@@ -37,7 +37,7 @@ public class AccountUpdater extends AccountEditor {
                     if (isEmailInUse(newEmail)) {
                         clr.clearScreen();
                         myAccount.header();
-                        System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t* The new email is already in use. Please try another email." + RESET);
+                        System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t  * The new email is already in use. Please try another email." + RESET);
                         changed = false;
                         continue;
                     }
