@@ -1,6 +1,7 @@
 package user;
 
 import display.Date;
+import display.clearScreen;
 import display.userMainMenu;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,11 +18,16 @@ import java.util.Scanner;
     dito lahat nilalagay lahat ng classes na ginawa natin under user folder
 */
 public class userMain {
+    public static final String GREEN_TEXT = "\u001B[32m"; 
+    public static final String RESET = "\u001B[0m";
+    public static final String ORANGE_TEXT = "\u001B[38;5;214m";
+    public static final String YELLOW_TEXT = "\u001B[33m";
     userMainMenu menu = new userMainMenu();
     private String email;
     Date day = new Date();
     LocalDate todayDate = LocalDate.now();
     double newIncome;
+    clearScreen clr = new clearScreen();
 
     public void setEmail(String email) {
         this.email = email;
@@ -33,12 +39,17 @@ public class userMain {
 
     public void startExpenseTracker(Savings savings, Needs needs, Wants wants) {
         Scanner s = new Scanner(System.in);
+        
     
-        // Check if the user's income is 0
+   
         double income = userIncome();
         if (income <= 0) {
-            System.out.println("Income is 0 or invalid. Exiting the expense tracker.");
-            return; // Exit the method early
+            clr.clearScreen();
+            System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t\tOh no, your Income is 0 !. ");
+            System.out.println("\t\t\t\t\t\t\tAutomatically proceeding to user menu." + RESET);
+            System.out.println("\n\n\t\t\t\t\t\t\t\tpress enter to continue...");
+            s.nextLine();
+            return; 
         }
     
         boolean normal = false;
