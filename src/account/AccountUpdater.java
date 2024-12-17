@@ -129,7 +129,7 @@ public class AccountUpdater extends AccountEditor {
                         return;
                     }
 
-                    if (confirm.confirmAction("\t\t\t\t\t\t\t\tAre you sure you want to change your email? (y/n): ")) {
+                    if (confirm.confirmAction("\t\t\t\t\t\t\t\tAre you sure you want to change your income? (y/n): ")) {
                         updateIncome();
                         return;
                     } else {
