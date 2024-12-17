@@ -87,6 +87,7 @@ public class AccountEditor {
             myAccount.header();
             System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t\t\t* Can't change Email. Please try again." + RESET);
             System.out.println("\n\n\t\t\t\t\t\t\t\t\t\tpress enter to continue...");
+            s.nextLine();
         }
     }
 

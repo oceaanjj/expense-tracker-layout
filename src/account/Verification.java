@@ -37,7 +37,7 @@ public class Verification {
             } else {
                 clr.clearScreen();
                 myAccount.header();
-                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\n* Email does not match the registered email. Please try again." + RESET);
+                //System.out.println(ORANGE_TEXT + "\t\t\t\t\t\t * Email does not match the registered email. Please try again." + RESET);
             }
         }
     }
@@ -57,7 +57,7 @@ public class Verification {
             } else {
                 clr.clearScreen();
                 myAccount.header();
-                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t* Incorrect password. Please try again." + RESET);
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t\t\t * Incorrect password. Please try again." + RESET);
             }
         }
     }
