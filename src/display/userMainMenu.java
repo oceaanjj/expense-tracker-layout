@@ -13,7 +13,7 @@ public class userMainMenu {
 
         clr.clearScreen();
     
-        final String TABS = "\t\t\t\t\t\t";
+        final String TABS = "\t\t\t\t\t\t\t\t\t\t\t";
 
         System.out.println(YELLOW + TABS + "_______  ______  _____ _   _ ____  _____           " + RESET);
         System.out.println(YELLOW + TABS + "| ____\\ \\/ /  _ \\| ____| \\ | / ___|| ____|          " + RESET);
@@ -35,18 +35,17 @@ public class userMainMenu {
 
 
     public void menu() {
-                System.out.println(GREEN_TEXT+"\t\t\t\t\t\t\t\t╔═══════════════════════════════════╗"+ RESET);
-                System.out.println(GREEN_TEXT+"\t\t\t\t\t\t\t\t║              CHOICES              ║"+ RESET);
-                System.out.println(GREEN_TEXT+"\t\t\t\t\t\t\t\t╠═══════════════════════════════════╣"+ RESET);
-                System.out.println(GREEN_TEXT+"\t\t\t\t\t\t\t\t║ [1] NEEDS                         ║"+ RESET);
-                System.out.println(GREEN_TEXT+"\t\t\t\t\t\t\t\t║ [2] WANTS                         ║"+ RESET);
-                System.out.println(GREEN_TEXT+"\t\t\t\t\t\t\t\t║ [3] SAVINGS                       ║"+ RESET);
-                System.out.println(GREEN_TEXT+"\t\t\t\t\t\t\t\t║ [4] EXIT                          ║"+ RESET);
-                System.out.println(GREEN_TEXT+"\t\t\t\t\t\t\t\t╚═══════════════════════════════════╝" + RESET);
-                
-                
-                
-                
+        System.out.println("\n\n");
+                System.out.println("\t\t\t\t\t\t\t\t╔═══════════════════════════════════════════════╗"+ RESET);
+                System.out.println("\t\t\t\t\t\t\t\t║                     CHOICES                   ║"+ RESET);
+                System.out.println("\t\t\t\t\t\t\t\t╠═══════════════════════════════════════════════╣"+ RESET);
+                System.out.println("\t\t\t\t\t\t\t\t║                                               ║"+ RESET);
+                System.out.println("\t\t\t\t\t\t\t\t║                 [1] NEEDS                     ║"+ RESET);
+                System.out.println("\t\t\t\t\t\t\t\t║                 [2] WANTS                     ║"+ RESET);
+                System.out.println("\t\t\t\t\t\t\t\t║                 [3] SAVINGS                   ║"+ RESET);
+                System.out.println("\t\t\t\t\t\t\t\t║                 [4] EXIT                      ║"+ RESET);
+                System.out.println("\t\t\t\t\t\t\t\t║                                               ║"+ RESET);
+                System.out.println("\t\t\t\t\t\t\t\t╚═══════════════════════════════════════════════╝" + RESET);          
 
         }
     }

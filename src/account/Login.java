@@ -195,7 +195,7 @@ public class Login {
     public void displayUserName(String email) {
         String directory = System.getProperty("user.dir") + "/src/database/accounts";
         File file = new File(directory, getEmail() + ".txt");
-        
+    
         if (!file.exists()) {
             System.out.println(ORANGE_TEXT + "* Error: Account file does not exist for email: " + email + RESET);
             return;
@@ -203,20 +203,40 @@ public class Login {
     
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String name = null;
-            for (int i = 0; i < 3; i++) {
-                name = reader.readLine();
-                if (name == null) {
+            String balance = null;
+    
+
+            for (int i = 0; i < 4; i++) {
+                String currentLine = reader.readLine();
+                if (currentLine == null) {
                     System.out.println(ORANGE_TEXT + "* Error: Account file does not contain enough lines." + RESET);
                     return;
                 }
+    
+                if (i == 2) {
+                    name = currentLine;
+                } else if (i == 3) {
+                    balance = currentLine;
+                }
             }
-            
-            // Display the name from line 3
-            System.out.println(YELLOW_TEXT + "\t\t\t\t\t\t\t\t\t\tWelcome, " + name + "!" + RESET);
+    
+            // Display the name and remaining balance
+            System.out.printf("\t\t\t\t\t\t\t   %-40s%s%s%s%s%n",
+            "Welcome, " + YELLOW_TEXT + name + RESET,
+            "Your balance : ",
+            GREEN_TEXT,
+            "₱" + balance,
+            RESET
+            );
+
+            //System.out.println("\t\t\t\t\t\t\t\t\t\t Your balance :  " + GREEN_TEXT + balance + RESET);
+            System.out.println("\n");
+    
         } catch (IOException e) {
             System.out.println(ORANGE_TEXT + "* Error: Unable to read the account file for email: " + email + RESET);
         }
     }
+    
     
     
 

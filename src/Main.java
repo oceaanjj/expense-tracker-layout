@@ -67,7 +67,7 @@ public class Main {
             //while (true) { 
                 mainmenu.display();
 
-                System.out.print(GREEN_TEXT + "\n\t\t\t\t\t\t\t   Enter choice : " + RESET);
+                System.out.print("\n\t\t\t\t\t\t\t   Enter choice : ");
                 
                 try {
                     choice = s.nextInt();
