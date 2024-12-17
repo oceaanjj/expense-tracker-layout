@@ -7,6 +7,7 @@ public class mainmenu extends menu {
 
                 String yellow = "\u001B[33m";
                 String reset = "\u001B[0m";
+                String ORANGE_TEXT = "\u001B[38;5;214m";
                 System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n");
         
                 System.out.println(yellow + "\t\t\t\t\t                   __        _______ _     ____ ___  __  __ _____   _____ ___                 " + reset);
@@ -22,12 +23,12 @@ public class mainmenu extends menu {
                 System.out.println(yellow + "\t\t\t\t\t                             \\___ \\\\ V /\\___ \\ | | |  _| | |\\/| |                             " + reset);
                 System.out.println(yellow + "\t\t\t\t\t                              ___) || |  ___) || | | |___| |  | |                             " + reset);
                 System.out.println(yellow + "\t\t\t\t\t                             |____/ |_| |____/ |_| |_____|_|  |_|                             " + reset);
-            
+                System.out.println(ORANGE_TEXT + "\n\n\t\t\t\t\t\t     Track your expenses today, secure your future tomorrow. Every peso counts." + reset);
         
         
         
         
-        System.out.println("\n\n");
+        System.out.println("\n");
         System.out.println("\t\t\t\t\t\t\t╔═══════════════════════════════════════════════════════════════╗");
         System.out.println("\t\t\t\t\t\t\t║                                                               ║");        
         System.out.println("\t\t\t\t\t\t\t║\t\t\t  [1] Register                          ║");
