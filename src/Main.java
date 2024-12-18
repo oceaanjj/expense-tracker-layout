@@ -206,6 +206,16 @@ public class Main {
                                                     //dashboard
                                                     //clr.clearScreen();
                                                     dashboard.displayDashboard();
+                                                    System.out.println("do you want to go back to the main menu? (yes/no) : ");
+                                                        if (s.nextLine().equalsIgnoreCase("yes")) {
+                    return;
+                }
+                else if (s.nextLine().equalsIgnoreCase("no")) {
+                    System.out.println("Invalid input. Please try again.");
+                }
+                else{
+                    System.out.println("Invalid input. Please try again.");
+                }
                                                     break;
 
                                                     case 4:
